@@ -78,7 +78,7 @@ resource "hcloud_server" "devgate" {
       private_key = "${file("${var.ssh_key_path}")}"
     }
 
-    source      = "${path.module}/.ssh/"
+    source      = "${path.module}/.ssh"
     destination = "/home/${var.user_name}/.ssh"
   }
 

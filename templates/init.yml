@@ -270,7 +270,8 @@ packages:
 
 runcmd:
   - echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf && sysctl -p
-  - mkdir -p /home/${user_name}/.ssh && cp /root/.ssh/authorized_keys /home/${user_name}/.ssh/authorized_keys && chown marv /home/${user_name}/.ssh/authorized_keys && chmod 700 /home/${user_name}/.ssh && chmod 600 /home/${user_name}/.ssh/authorized_keys
+  - su ${user_name} -c 'mkdir ~/.ssh && chmod 700 ~/.ssh'
+  - cp /root/.ssh/authorized_keys /home/${user_name}/.ssh/authorized_keys && chown ${user_name} /home/${user_name}/.ssh/authorized_keys && chmod 600 /home/${user_name}/.ssh/authorized_keys
   - su ${user_name} -c 'bash ~/install-tools.sh'
   - su ${user_name} -c 'bash ~/install-env.sh'
   - service networking restart
