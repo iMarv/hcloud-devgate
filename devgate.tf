@@ -92,7 +92,7 @@ resource "hcloud_server" "devgate" {
       private_key = "${file("${path.module}/id_rsa")}"
     }
 
-    content     = "${data.template_file.floating_ip}"
+    content     = "${data.template_file.floating_ip.rendered}"
     destination = "/etc/network/interfaces.d/60-${var.floating_ip_address}.cfg"
   }
 
@@ -103,7 +103,7 @@ resource "hcloud_server" "devgate" {
       private_key = "${file("${path.module}/id_rsa")}"
     }
 
-    content     = "${data.template_file.install_env}"
+    content     = "${data.template_file.install_env.rendered}"
     destination = "/home/${var.user_name}/install-env.sh"
   }
 
@@ -114,7 +114,7 @@ resource "hcloud_server" "devgate" {
       private_key = "${file("${path.module}/id_rsa")}"
     }
 
-    content     = "${data.template_file.install_tools}"
+    content     = "${data.template_file.install_tools.rendered}"
     destination = "/home/${var.user_name}/install-tools.sh"
   }
 
@@ -125,7 +125,7 @@ resource "hcloud_server" "devgate" {
       private_key = "${file("${path.module}/id_rsa")}"
     }
 
-    content     = "${data.template_file.zshrc}"
+    content     = "${data.template_file.zshrc.rendered}"
     destination = "/home/${var.user_name}/.zshrc"
   }
 }

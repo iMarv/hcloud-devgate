@@ -9,12 +9,12 @@ variable "floating_ip_address" {
 }
 
 variable "projects_volume_id" {
-  type        = "number"
+  type        = "string"
   description = "ID of an existing volume which is going to store your projects"
 }
 
 variable "ssh_keys" {
-  type        = "list(string)"
+  type        = "list"
   description = "Array of ssh keys that can log into the root user of the devgate"
 }
 
