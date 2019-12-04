@@ -1,0 +1,15 @@
+hcloud_token = ""
+
+floating_ip_address = ""
+
+projects_volume_id = ""
+
+ssh_keys = []
+
+user_name = ""
+
+git_user = ""
+
+git_mail = ""
+
+git_editor = ""
