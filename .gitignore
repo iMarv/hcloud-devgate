@@ -4,4 +4,4 @@
 id_rsa
 .ssh/devgate_pair
 .ssh/devgate_pair.pub
-settings.tfvars
+terraform.tfvars
