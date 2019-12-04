@@ -63,13 +63,10 @@ resource "hcloud_server" "devgate" {
   ssh_keys    = "${var.ssh_keys}"
 
   labels = {
-    "type"        = "${var.devenv}"
+    "devenv"      = "${var.devenv}"
     "floating_ip" = "${var.floating_ip_address}"
     "volume"      = "${var.projects_volume_id}"
     "user_name"   = "${var.user_name}"
-    "git_user"    = "${var.git_user}"
-    "git_mail"    = "${var.git_mail}"
-    "git_editor"  = "${var.git_editor}"
   }
 
   user_data = "${data.template_file.cloud_init.rendered}"
