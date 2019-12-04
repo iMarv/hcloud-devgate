@@ -51,6 +51,11 @@ variable "server_type" {
   default     = "cx51"
 }
 
+variable "ssh_key_path" {
+  type        = "string"
+  description = "Path to private ssh key to use for authentication when setting up the server"
+}
+
 variable "devenv" {
   type        = "string"
   description = "Environment to prepare. Currently available: node, rust, clojure"

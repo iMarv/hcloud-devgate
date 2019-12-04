@@ -13,3 +13,5 @@ git_user = ""
 git_mail = ""
 
 git_editor = ""
+
+ssh_key_path = ""

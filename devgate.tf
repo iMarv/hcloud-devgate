@@ -78,7 +78,7 @@ resource "hcloud_server" "devgate" {
     connection {
       host        = "${hcloud_server.devgate.ipv4_address}"
       agent       = false
-      private_key = "${file("${path.module}/id_rsa")}"
+      private_key = "${file("${var.ssh_key_path}")}"
     }
 
     source      = "${path.module}/.ssh/"
@@ -89,7 +89,7 @@ resource "hcloud_server" "devgate" {
     connection {
       host        = "${hcloud_server.devgate.ipv4_address}"
       agent       = false
-      private_key = "${file("${path.module}/id_rsa")}"
+      private_key = "${file("${var.ssh_key_path}")}"
     }
 
     content     = "${data.template_file.floating_ip.rendered}"
@@ -100,7 +100,7 @@ resource "hcloud_server" "devgate" {
     connection {
       host        = "${hcloud_server.devgate.ipv4_address}"
       agent       = false
-      private_key = "${file("${path.module}/id_rsa")}"
+      private_key = "${file("${var.ssh_key_path}")}"
     }
 
     content     = "${data.template_file.install_env.rendered}"
@@ -111,7 +111,7 @@ resource "hcloud_server" "devgate" {
     connection {
       host        = "${hcloud_server.devgate.ipv4_address}"
       agent       = false
-      private_key = "${file("${path.module}/id_rsa")}"
+      private_key = "${file("${var.ssh_key_path}")}"
     }
 
     content     = "${data.template_file.install_tools.rendered}"
@@ -122,7 +122,7 @@ resource "hcloud_server" "devgate" {
     connection {
       host        = "${hcloud_server.devgate.ipv4_address}"
       agent       = false
-      private_key = "${file("${path.module}/id_rsa")}"
+      private_key = "${file("${var.ssh_key_path}")}"
     }
 
     content     = "${data.template_file.zshrc.rendered}"
