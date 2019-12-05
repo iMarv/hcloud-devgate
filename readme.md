@@ -54,3 +54,6 @@ Terraform was mainly chosen to be able to save some money. Instead of running a 
     ```
     Disabling `StrictHostKeyChecking` will allow you to log into the devgate without receiving a warning from `ssh` as we are expecting the server behind the IP to be changing.
 2. If using VSCode, add `.vscode/extensions.json` to your project and fill it with the extension you want to use in that project. When opening the project with VSCode it will prompt you to install the extensions (on the remote machine) which will save you some time
+
+### Usage
+There are not many things to say about the usage, apart from that it is expected that projects are created in the volume, for ease of use this template creates a softlink to the volume in your home directory with the name `projects`.
