@@ -38,6 +38,11 @@ variable "ssh_key_path" {
   description = "Path to private ssh key to use for authentication when setting up the server"
 }
 
+variable "keypair_name" {
+  type        = string
+  description = "Name of the keypair files that are copied to the devgate"
+}
+
 variable "devenv" {
   type        = string
   description = "Environment to prepare. Currently available: node, rust, clojure"

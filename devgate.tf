@@ -51,6 +51,15 @@ data "template_file" "zshrc" {
   }
 }
 
+# Get template for ssh config to ease connection to git hosts
+data "template_file" "ssh_config" {
+  template = file("${path.module}/templates/ssh_config")
+
+  vars = {
+    keypair_name = var.keypair_name
+  }
+}
+
 data "hcloud_floating_ip" "devgate-ip" {
   ip_address = var.floating_ip_address
 }
@@ -146,6 +155,18 @@ resource "hcloud_server" "devgate" {
 
     content     = data.template_file.zshrc.rendered
     destination = "/home/${var.user_name}/.zshrc"
+  }
+
+  provisioner "file" {
+    connection {
+      type        = "ssh"
+      host        = hcloud_server.devgate.ipv4_address
+      agent       = false
+      private_key = file(var.ssh_key_path)
+    }
+
+    content     = data.template_file.ssh_config.rendered
+    destination = "/home/${var.user_name}/.ssh/config"
   }
 }
 

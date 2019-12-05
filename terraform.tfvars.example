@@ -23,6 +23,9 @@ git_mail = "enrico.pallazo@example.com"
 # terraform to copy files to the devgate
 ssh_key_path = "/home/enrico/.ssh/terraform_rsa"
 
+# Name of the ssh-keys that are going to be copied to the devgate
+keypair_name = "id_rsa"
+
 # The default editor that git will use is vim, if you want to use anything else
 # define its name here
 # git_editor = "vim"

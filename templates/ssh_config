@@ -1,11 +1,11 @@
 Host gitlab
     HostName gitlab.com
-    IdentityFile ~/.ssh/devgate_pair
+    IdentityFile ~/.ssh/${keypair_name}
     IdentitiesOnly yes
     StrictHostKeyChecking no
 
 Host github
     HostName github.com
-    IdentityFile ~/.ssh/devgate_pair
+    IdentityFile ~/.ssh/${keypair_name}
     IdentitiesOnly yes
     StrictHostKeyChecking no
