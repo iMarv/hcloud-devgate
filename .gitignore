@@ -2,6 +2,6 @@
 *.tfstate
 *.backup
 id_rsa
-.ssh
-!.ssh/config
+.ssh/*
+!.ssh/.gitkeep
 terraform.tfvars
