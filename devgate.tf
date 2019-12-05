@@ -67,7 +67,9 @@ resource "hcloud_server" "devgate" {
     "floating_ip" = var.floating_ip_address
     "volume"      = var.projects_volume_id
     "user_name"   = var.user_name
-    "git_user"    = var.git_user
+    "git_user"    = replace(var.git_user, " ", "_")
+    "git_mail"    = replace(var.git_mail, "@", "_at_")
+    "git_editor"  = var.git_editor
   }
 
   user_data = data.template_file.cloud_init.rendered
