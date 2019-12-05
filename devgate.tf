@@ -3,6 +3,7 @@ provider "hcloud" {
   token = var.hcloud_token
 }
 
+# Get template for userdata and fill user name
 data "template_file" "cloud_init" {
   template = file("${path.module}/templates/init.yml")
 
@@ -11,6 +12,7 @@ data "template_file" "cloud_init" {
   }
 }
 
+# Get template for configuration of floating IP and update it according to the selected ip
 data "template_file" "floating_ip" {
   template = file("${path.module}/templates/floating_ip_conf")
 
@@ -19,6 +21,7 @@ data "template_file" "floating_ip" {
   }
 }
 
+# Get template for environment install step and fill devenv variable
 data "template_file" "install_env" {
   template = file("${path.module}/templates/install-env.sh")
 
@@ -27,6 +30,7 @@ data "template_file" "install_env" {
   }
 }
 
+# Get template for tooling install step
 data "template_file" "install_tools" {
   template = file("${path.module}/templates/install-tools.sh")
 
@@ -38,6 +42,7 @@ data "template_file" "install_tools" {
   }
 }
 
+# Get template for zshrc and fill relevant parts of config
 data "template_file" "zshrc" {
   template = file("${path.module}/templates/.zshrc")
 
@@ -62,6 +67,8 @@ resource "hcloud_server" "devgate" {
   location    = var.location
   ssh_keys    = var.ssh_keys
 
+  # The labels are not used by this template but can provide a better overview
+  # when searching for resources in your hetzner cloud project
   labels = {
     "devenv"      = var.devenv
     "floating_ip" = var.floating_ip_address
@@ -74,6 +81,8 @@ resource "hcloud_server" "devgate" {
 
   user_data = data.template_file.cloud_init.rendered
 
+  # Copies `.ssh` folder from this repository into the home directory of the desired
+  # user on the remote machine.
   provisioner "file" {
     connection {
       type        = "ssh"
@@ -86,6 +95,8 @@ resource "hcloud_server" "devgate" {
     destination = "/home/${var.user_name}/.ssh"
   }
 
+  # Writes the configuration that is required for our floating ip into the
+  # according directory
   provisioner "file" {
     connection {
       type        = "ssh"
@@ -98,6 +109,7 @@ resource "hcloud_server" "devgate" {
     destination = "/etc/network/interfaces.d/60-${var.floating_ip_address}.cfg"
   }
 
+  # Writes environment install script to remote server
   provisioner "file" {
     connection {
       type        = "ssh"
@@ -110,6 +122,7 @@ resource "hcloud_server" "devgate" {
     destination = "/home/${var.user_name}/install-env.sh"
   }
 
+  # Writes tooling install script to remote server
   provisioner "file" {
     connection {
       type        = "ssh"
@@ -122,6 +135,7 @@ resource "hcloud_server" "devgate" {
     destination = "/home/${var.user_name}/install-tools.sh"
   }
 
+  # Writes zshrc to remote server
   provisioner "file" {
     connection {
       type        = "ssh"

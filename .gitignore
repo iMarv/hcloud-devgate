@@ -2,6 +2,6 @@
 *.tfstate
 *.backup
 id_rsa
-.ssh/devgate_pair
-.ssh/devgate_pair.pub
+.ssh
+!.ssh/config
 terraform.tfvars
