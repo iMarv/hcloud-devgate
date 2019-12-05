@@ -1,4 +1,4 @@
-# Hetzner Cloud Devgate
+# hcloud devgate
 
 Notes:
 - This **is not** an **official Hetzner Cloud project**
@@ -50,7 +50,7 @@ Terraform was mainly chosen to be able to save some money. Instead of running a 
         UserKnownHostsFile=/dev/null
         HostName <your_floating_ip>
         User <your_user_name>
-        IdentityFile <ssh_key_to_authenticat_with>
+        IdentityFile <ssh_key_to_authenticate_with>
     ```
     Disabling `StrictHostKeyChecking` will allow you to log into the devgate without receiving a warning from `ssh` as we are expecting the server behind the IP to be changing.
 2. If using VSCode, add `.vscode/extensions.json` to your project and fill it with the extension you want to use in that project. When opening the project with VSCode it will prompt you to install the extensions (on the remote machine) which will save you some time
