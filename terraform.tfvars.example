@@ -1,17 +1,41 @@
+# The API token which terraform will use to create your server
 hcloud_token = "your_api_token"
 
+# Your floating ip which ensures that you can always connect easily
 floating_ip_address = "0.0.0.0"
 
+# Id of the volumes that will be used for storing your projects
 projects_volume_id = "123456"
 
+# SSH keys you want to be able to connect with to the devgate
 ssh_keys = ["work key"]
 
+# Your UNIX username
 user_name = "enrico"
 
+# The username used for git
 git_user = "Enrico Pallazo"
 
+# The email used for git
 git_mail = "enrico.pallazo@example.com"
 
-git_editor = "vim"
-
+# Path to your local ssh key (without password) that is going to be used by
+# terraform to copy files to the devgate
 ssh_key_path = "/home/enrico/.ssh/terraform_rsa"
+
+# The default editor that git will use is vim, if you want to use anything else
+# define its name here
+# git_editor = "vim"
+
+# If you do not set `devenv`, terraform will prompt you and ask for a value
+# this is especially helpful if you do not always use the same setup
+# devenv = "node"
+
+# As we are planning to delete the server after we are done developing we can
+# use the most perfomant server type.
+# If you rely on e.g. dedicated resources you can change this to a ccx51 or
+# whatever pleases you
+# server_type = "cx51"
+
+# Default location is Nürnberg, if you see a need for another location, change accordingly
+# location = "nbg1"

@@ -33,6 +33,16 @@ variable "git_mail" {
   description = "Mail adress of the git user"
 }
 
+variable "ssh_key_path" {
+  type        = string
+  description = "Path to private ssh key to use for authentication when setting up the server"
+}
+
+variable "devenv" {
+  type        = string
+  description = "Environment to prepare. Currently available: node, rust, clojure"
+}
+
 variable "git_editor" {
   type        = string
   description = "Default editor to be used by git"
@@ -50,14 +60,3 @@ variable "server_type" {
   description = "Server Type of the server"
   default     = "cx51"
 }
-
-variable "ssh_key_path" {
-  type        = string
-  description = "Path to private ssh key to use for authentication when setting up the server"
-}
-
-variable "devenv" {
-  type        = string
-  description = "Environment to prepare. Currently available: node, rust, clojure"
-}
-
