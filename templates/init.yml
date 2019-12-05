@@ -257,16 +257,10 @@ apt_sources:
 
 packages:
   - software-properties-common
-  - containernetworking-plugins
-  - podman
-  - yarn
   - unzip
   - zsh
   - uidmap
-  - libsqlite3-dev
   - gcc
-  - leiningen
-  - openjdk-8-jdk-headless
 
 runcmd:
   - echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf && sysctl -p
