@@ -1,17 +1,17 @@
-hcloud_token = ""
+hcloud_token = "your_api_token"
 
-floating_ip_address = ""
+floating_ip_address = "0.0.0.0"
 
-projects_volume_id = ""
+projects_volume_id = "123456"
 
-ssh_keys = []
+ssh_keys = ["work key"]
 
-user_name = ""
+user_name = "enrico"
 
-git_user = ""
+git_user = "Enrico Pallazo"
 
-git_mail = ""
+git_mail = "enrico.pallazo@example.com"
 
-git_editor = ""
+git_editor = "vim"
 
-ssh_key_path = ""
+ssh_key_path = "/home/enrico/.ssh/terraform_rsa"
